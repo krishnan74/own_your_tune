@@ -101,8 +101,6 @@ const musicData = [
   },
 ];
 
-
-
 const ExplorePage = () => {
   const [copiedArtistAddress, setCopiedArtistAddress] = useState(null);
 
@@ -127,9 +125,7 @@ const ExplorePage = () => {
               imageUrl={music.imageUrl}
               songPrice={music.price}
               artistAddress={music.artistAddress}
-              
             />
-            
           </div>
         ))}
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Welcome } from "../components";
-import Layout from "./Layout";
+
 
 const TestPage = () => {
   return (

@@ -1,20 +1,20 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="flex flex-col h-[100vh] w-[250px] bg-gradient-to-b from-[#766A62] via-[#514D51] to-[#313D49] bg-opacity-60 backdrop-filter backdrop-blur-lg shadow-md px-4 text-white">
-      <div className="mb-4 flex flex-col justify-center items-center mt-10">
+    <div className="flex flex-col h-[100vh] w-[250px] bg-white justify-around shadow-md px-4 text-black border border-r border-gray-300 pb-[20vh]">
+      <div className="mb-4 flex flex-col justify-center items-center ">
         <img
           src="../images/logo.png"
           alt="Profile"
           className="w-32 h-32 rounded-full object-cover"
         />
-        <p className="mt-3 text-3xl font-bold">Own Your Tune</p>
+        <p className="mt-3 text-2xl font-bold">Own Your Tune</p>
       </div>
 
-      <div className="flex flex-col gap-[10px]">
+      <div className="flex flex-col gap-[10px] ">
         <MenuItem
           icon="https://img.icons8.com/metro/26/ffffff/compass.png"
           text="Explore"
@@ -37,30 +37,41 @@ const Navbar = () => {
         />
       </div>
 
-      <div className="mt-10 ">
+      <div className="flex justify-center gap-5 ">
         <MenuItem
           icon="https://img.icons8.com/metro/26/ffffff/like.png"
-          text="Favorites"
+          trailingMenu={true}
         />
         <MenuItem
           icon="https://img.icons8.com/metro/26/ffffff/download.png"
-          text="Downloads"
+          trailingMenu={true}
         />
         <MenuItem
           icon="https://img.icons8.com/metro/26/ffffff/time.png"
-          text="History"
+          trailingMenu={true}
         />
       </div>
     </div>
   );
 };
 
-const MenuItem = ({ icon, text, navtext }) => {
+const MenuItem = ({ icon, text, navtext, trailingMenu }) => {
+  const [onHover, setOnHover] = useState(false);
   return (
-    <Link to={`/${navtext}`}>
-      <div className="flex items-center gap-[15px] menu-item px-5 py-3 rounded-md cursor-pointer">
+    <Link
+      to={`/${navtext}`}
+      onMouseEnter={() => setOnHover(true)}
+      onMouseLeave={() => setOnHover(false)}
+    >
+      <div
+        className={`flex items-center gap-[15px] menu-item px-5 py-3 rounded-md cursor-pointer shadow-sm border-gray-300 border ${
+          onHover ? "border-gray-500 translate-y-[-5px] duration-100 " : ""
+        } 
+        ${trailingMenu ? "px-3 py-3" : ""}
+        `}
+      >
         <img src={icon} alt={text} className="w-[17px] h-[17px]" />
-        <p className="text-base">{text}</p>
+        {!trailingMenu && <p className="text-base">{text}</p>}
       </div>
     </Link>
   );

@@ -71,17 +71,14 @@ const AudioPlayer = (props) => {
   };
 
   return (
-    <div className="flex items-center h-[100px] w-[100vw] bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-md ">
+    <div className="flex items-center h-[100px] w-[100vw] bg-black  shadow-md ">
       <audio
         ref={audioPlayer}
-        src="https://bafybeig2ztelbx524rxmhlx6pylkaciy447lslnna4ll74wpfy5l7pel5a.ipfs.dweb.link/audio.mp3"
+        src="https://bafybeigblyqpzgbyeqklwhoefzyojyfdwdqe6gwsiry5blwma2uosxeile.ipfs.dweb.link/audio.mp3"
         preload="metadata"
       ></audio>
       <div className="flex items-center w-[250px] justify-around px-2">
-        <button
-          className="bg-white bg-opacity-50 rounded-md p-2 "
-          onClick={backThirty}
-        >
+        <button className="bg-white  rounded-md p-2 " onClick={backThirty}>
           <img
             width={39}
             height={39}
@@ -92,10 +89,7 @@ const AudioPlayer = (props) => {
         <button onClick={togglePlayPause} className="bg-white rounded-full p-4">
           {isPlaying ? <FaPause /> : <FaPlay className={styles.play} />}
         </button>
-        <button
-          className="bg-white bg-opacity-50 rounded-md p-2"
-          onClick={forwardThirty}
-        >
+        <button className="bg-white  rounded-md p-2" onClick={forwardThirty}>
           <img
             width={39}
             height={39}
@@ -108,24 +102,23 @@ const AudioPlayer = (props) => {
       <div className="ml-5">
         <img width={75} height={75} src="../images/closer.jpeg" alt="" />
       </div>
-      <div className="flex">
+      <div className="flex flex-col justify-between gap-2 ml-5 text-white">
+        <div className="text-xl font-semibold">{"Closer"}</div>
         {/* current time */}
-        <div className={styles.currentTime}>{calculateTime(currentTime)}</div>
-
-        {/* progress bar */}
-        <div>
-          <input
-            type="range"
-            className={styles.progressBar}
-            defaultValue="0"
-            ref={progressBar}
-            onChange={changeRange}
-          />
-        </div>
-
-        {/* duration */}
-        <div className={styles.duration}>
-          {duration && !isNaN(duration) && calculateTime(duration)}
+        <div className="flex gap-5">
+          <div className={styles.currentTime}>{calculateTime(currentTime)}</div>
+          {/* progress bar */}
+          <div>
+            <input
+              type="range"
+              className={styles.progressBar}
+              defaultValue="0"
+              ref={progressBar}
+              onChange={changeRange}
+            />
+          </div>
+          {/* duration */}
+          <div className={styles.duration}>{duration || 4.02}</div>
         </div>
       </div>
 

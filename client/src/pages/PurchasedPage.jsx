@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Layout from "./Layout";
+
 import PurchaseMusicCard from "../components/PurchaseMusicCard";
 //import Web3 from "web3";
 

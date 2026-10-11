@@ -8,7 +8,7 @@ import { Web3Storage } from "web3.storage";
 
 const web3StorageClient = new Web3Storage({
   token:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDEzRjlhNDRiODAyZDYwNzIyOTM3RTgxZWZlMWI5YjYyODhEMjM2MzEiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2OTg0OTU3OTkxNzgsIm5hbWUiOiJzdG9yZSJ9.6M-5n5IXDrSHS6YpI1xmifVmoT1ndejAaak7igrBoqI",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDcxRjZjOWJlODhBOTBEOUVhQ2FkNjBFZmU0RDEzYjFkMjUxMDA4MWIiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2OTg5NDQzMTYwNzksIm5hbWUiOiJkZW1vIn0.05VI2rrOOiT-ZsI7BeZXWW0uMCiN8SAkwOD3DsJJOWo",
 });
 
 const FileUploadIPFS = () => {

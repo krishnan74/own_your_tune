@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import "./music-card.css";
 import { Link } from "react-router-dom";
 import { TransactionContext } from "../context/TransactionContext";
+import { shortenAddress } from "../utils/shortenAddress";
 
 const MusicCard = (props) => {
   const [showDetails, setShowDetails] = useState(false);
@@ -35,7 +36,7 @@ const MusicCard = (props) => {
 
   const handleSubmit = (e) => {
     const { addressTo, amount, keyword, message } = formData;
-    
+
     e.preventDefault();
 
     if (!addressTo || !amount || !keyword || !message) return;
@@ -64,18 +65,30 @@ const MusicCard = (props) => {
     >
       <div
         className="game-details-div
-         px-5 w-[321px] border-t-1 h-[321px]  bg-[rgba(0,0,0,0.4)] text-white relative top-[321px] "
+         px-5 w-[321px] border-black h-[321px]  bg-[rgba(0,0,0,0.7)] text-white relative top-[322px] "
       >
         <h2 className="text-3xl font-extrabold text-white mt-3">
           {props.title}
         </h2>
 
-        {showDetails && (
-          <div className="text-xl">
+        {true && (
+          <div className="mt-5 display flex flex-col gap-1">
             <p>Song Genre: {props.songGenre}</p>
             <p>Song Artist: {props.songArtist}</p>
             <p>Song Price: ${props.songPrice}</p>
-            <p>Artist Address: {props.artistAddress}</p>
+            <div className="display flex gap-10">
+              <p>Artist Address: {shortenAddress(props.artistAddress)}</p>
+              <button
+                className={` text-white rounded ${
+                  isCopied ? "" : ""
+                }`}
+                onClick={() => {
+                  copyToClipboard(props.artistAddress);
+                }}
+              >
+                {isCopied ? "Copied" : "Copy"}
+              </button>
+            </div>
 
             <Input
               placeholder=""
@@ -108,23 +121,15 @@ const MusicCard = (props) => {
 
             <div className="mt-3">
               <Link to={"/buy"}>
-                <div className="bg-blue-500 text-white px-3 py-1 rounded mr-2">
+                <div className="bg-blue-500 text-white px-3 py-1 rounded mr-2 mb-2 w-full">
                   Buy
                 </div>
               </Link>
-              <button
-                className={`bg-green-500 text-white px-3 py-1 rounded mr-2 ${
-                  isCopied ? "bg-gray-500" : ""
-                }`}
-                onClick={() => {
-                  copyToClipboard(props.artistAddress);
-                }}
-              >
-                {isCopied ? "Copied" : "Copy Address"}
-              </button>
-              <button className="bg-green-500 text-white px-3 py-1 rounded">
-                Wishlist
-              </button>
+              <div className="display flex justify-between mt-5">
+                <button className="bg-green-500 text-white px-3 py-1 rounded">
+                  Wishlist
+                </button>
+              </div>
             </div>
           </div>
         )}

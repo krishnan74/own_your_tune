@@ -12,7 +12,8 @@
 
 
 .full-div .game-details-div {
-  transition: transform 0.4s ease; /* Adjust the duration (0.3s) and easing function (ease) as needed */
+  transition: transform 0.4s ease; 
+   /* Adjust the duration (0.3s) and easing function (ease) as needed */
 }
 
 .full-div:hover .game-details-div {
